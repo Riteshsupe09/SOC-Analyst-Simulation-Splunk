@@ -1,1 +1,5 @@
+index=* sourcetype=linux_secure "Failed password"
+| rex field=_raw "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
+| stats count AS attempts by src_ip
+| sort - attempts
 
